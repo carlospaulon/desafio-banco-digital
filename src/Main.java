@@ -13,7 +13,7 @@ public class Main {
 		
 		carlos.setNome("Carlos");
 		junior.setNome("Junior");
-		poupanca2.setNome("Maria");
+		poupanca2.setNome("Giovana");
 		
 		Conta cc = new ContaCorrente(carlos);
 		IConta cc1 = new ContaCorrente(junior);
