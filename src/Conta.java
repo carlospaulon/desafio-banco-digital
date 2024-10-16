@@ -15,13 +15,32 @@ public abstract class Conta implements IConta{
 		this.cliente = cliente;
 	}
 	
+	public void menu() {
+		String menu = "Menu de opções bancárias!"
+				+ "\n1 - sacar"
+				+ "\n2 - deposito"
+				+ "\n3 - trasnferencia"
+				+ "\n4 - extrato";
+		
+		System.out.println(menu);
+	}
+	
 	public void sacar(double valor) {
-		this.saldo -= valor;
+		boolean excedeu_saldo = valor > saldo;
+		if (excedeu_saldo) {
+			throw new RuntimeException("Não foi possível realizar esta operação!");
+		} else if (valor > 0) {
+			this.saldo -= valor;			
+		}
 
 	}
 
 	public void depositar(double valor) {
-		this.saldo += valor;
+		if (valor > 0) {
+			this.saldo += valor;			
+		} else {
+			throw new RuntimeException("Não foi possível realizar esta operação!");
+		}
 
 	}
 
@@ -35,6 +54,8 @@ public abstract class Conta implements IConta{
 		System.out.println(String.format("Agencia: %d", this.agencia));
 		System.out.println(String.format("Numero da conta: %d", this.numeroConta));
 		System.out.println(String.format("Saldo: %.2f%n", this.saldo));
+		System.out.println("================\n");
+
 	}
 
 	public int getAgencia() {
